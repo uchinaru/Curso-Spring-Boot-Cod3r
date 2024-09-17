@@ -29,6 +29,10 @@ public class Produto {
 	
 	@NonNull
 	private String nome;
+
+	@NonNull
+	private Double preco;
 	
-	private long valor;
+	@NonNull
+	private Double desconto;
 }

@@ -25,11 +25,10 @@ public class ControllerProduto {
 	private ProdutoRepository produtoRep;
 
 	@PostMapping("/novo")
-	public Produto novoProduto(@RequestParam String nome) {
+	public Produto novoProduto(@RequestParam String nome, @RequestParam double preco, @RequestParam double desconto) {
 		
-		Produto pd = new Produto(nome);
+		Produto pd = new Produto(nome, preco, desconto);
 		produtoRep.save(pd);
-		
 		return pd;
 	}
 	
