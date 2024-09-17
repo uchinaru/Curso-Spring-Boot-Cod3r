@@ -1,4 +1,4 @@
-package cod3rspringboot_exercicios.models;
+package cod3rspringboot_exercicios.models.entites;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
