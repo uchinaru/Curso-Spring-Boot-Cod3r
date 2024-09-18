@@ -1,9 +1,11 @@
 package cod3rspringboot_exercicios.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,5 +48,10 @@ public class ControllerProduto {
 	public List<Produto> getProdutos(){
 		List<Produto> result = (List<Produto>) produtoRep.findAll();
 		return result;
+	}
+	
+	@GetMapping(path = "/{id}")
+	public Optional<Produto> getProdutoId(@PathVariable int id) {
+		return produtoRep.findById(id);
 	}
 }
