@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,7 +40,7 @@ public class ControllerProduto {
 //	}
 	
 //	METODO QUE RECEBE O OBJETO POR COMPLETO
-	@PostMapping("/novo")
+	@RequestMapping(method = {RequestMethod.POST,RequestMethod.PUT}) // Agora o metodo é capaz de salvar e alterar os produtos contendo as duas anotations 
 	public Produto novoProduto(@Valid Produto produto) {
 		
 		produtoRep.save(produto);
@@ -58,9 +59,9 @@ public class ControllerProduto {
 	}
 	
 	// Metodo PUT para salvar o objeto por completo, caso queira alterar parcialmente utilize a anotation @PatchMapping
-	@PutMapping
-	public Produto alterarProduto(@Valid Produto produto) {
-		produtoRep.save(produto);
-		return produto;
-	}
+//	@PutMapping
+//	public Produto alterarProduto(@Valid Produto produto) {
+//		produtoRep.save(produto);
+//		return produto;
+//	}
 }
