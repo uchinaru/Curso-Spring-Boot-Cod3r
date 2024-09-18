@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cod3rspringboot_exercicios.models.entites.Produto;
 import cod3rspringboot_exercicios.models.repositories.ProdutoRepository;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,17 +26,17 @@ public class ControllerProduto {
 	private ProdutoRepository produtoRep;
 
 //	METODO QUE RECEBE VALORES POR PARAMETRO PARA O OBJETO
-	@PostMapping("/novo")
-	public Produto novoProduto(@RequestParam String nome, @RequestParam double preco, @RequestParam double desconto) {
-		
-		Produto pd = new Produto(nome, preco, desconto);
-		produtoRep.save(pd);
-		return pd;
-	}
+//	@PostMapping("/novo")
+//	public Produto novoProduto(@RequestParam String nome, @RequestParam double preco, @RequestParam double desconto) {
+//		
+//		Produto pd = new Produto(nome, preco, desconto);
+//		produtoRep.save(pd);
+//		return pd;
+//	}
 	
 //	METODO QUE RECEBE O OBJETO POR COMPLETO
 	@PostMapping("/novo")
-	public Produto novoProduto(Produto produto) {
+	public Produto novoProduto(@Valid Produto produto) {
 		
 		produtoRep.save(produto);
 		return produto;

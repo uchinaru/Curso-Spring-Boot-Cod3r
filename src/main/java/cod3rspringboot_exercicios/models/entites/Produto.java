@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,12 +30,16 @@ public class Produto {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
+	@NotBlank
 	@NonNull
 	private String nome;
 
 	@NonNull
+	@Min(0)
 	private Double preco;
 	
 	@NonNull
+	@Min(0)
+	@Max(1)
 	private Double desconto;
 }
