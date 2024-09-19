@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,6 +41,7 @@ public class ControllerProduto {
 //	}
 	
 //	METODO QUE RECEBE O OBJETO POR COMPLETO
+//	@PostMapping
 	@RequestMapping(method = {RequestMethod.POST,RequestMethod.PUT}) // Agora o metodo é capaz de salvar e alterar os produtos contendo as duas anotations 
 	public Produto novoProduto(@Valid Produto produto) {
 		
@@ -64,4 +66,14 @@ public class ControllerProduto {
 //		produtoRep.save(produto);
 //		return produto;
 //	}
+	
+	@DeleteMapping(path = "/{id}")
+	public String deletaProduto(@PathVariable int id) {
+		try {
+			produtoRep.deleteById(id);
+			return "Deletado com sucesso";
+		} catch (Exception e) {
+			return "Error ao deletar.";
+		}
+	}
 }
