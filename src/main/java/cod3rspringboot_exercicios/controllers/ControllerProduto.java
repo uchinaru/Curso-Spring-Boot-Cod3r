@@ -6,13 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cod3rspringboot_exercicios.models.entites.Produto;
@@ -75,5 +71,10 @@ public class ControllerProduto {
 		} catch (Exception e) {
 			return "Error ao deletar.";
 		}
+	}
+	
+	@GetMapping(path = "/nome/{nome}")
+	public Iterable<Produto> obterProdutoPorNome(@PathVariable String nome){
+		return produtoRep.findByNomeContainingIgnoreCase(nome);
 	}
 }
